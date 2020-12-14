@@ -16,6 +16,4 @@ if __name__=='__main__':
         sys.exit()
 
     else:
-        process_log_files(sys.argv[1], int(sys.argv[2]), 0)
-
-    #print(sys.argv[1], int(sys.argv[2]))
+        process_log_files(sys.argv[1], int(sys.argv[2]))

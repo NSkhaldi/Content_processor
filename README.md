@@ -11,7 +11,7 @@ The repo contains:
     *  tests: containing the tests
     *  data: contains the data source data for the first part and for the tests
     *  output: contains the generated log data
-    *  doc: contains a jupyter notebook and its pdf file
+    *  docs: contains a jupyter notebook and its pdf file
     
 *  Files
    *   README.md
@@ -22,7 +22,7 @@ The repo contains:
 
 ## Notes and sssumptions 
 
-*   A unique log file generation should not take more than 5 min
+*   I assumed that a unique log file generation should not take more than some x time to generate.
 *   Each predefined amount of time log files are processed
 *   The logs are in each iteration reduced and sorted by time
 *   The processing start with the file that is currently generated
@@ -63,11 +63,13 @@ python scripts/main.py <existing hostname> <time to reprocess (s)>
 ```
 
 ## Demo & Proof of concept
-*   We use by default a list of 3 hosts, It can changed it the aktool/conf.py file. Don't forget to run the setup again to consider the changes.
+*   By default a list of 3 hosts, It can changed it the aktool/conf.py file. Don't forget to run the setup again to consider the changes.
 
 ```
 ['Hannibal', 'Hanny', 'Steeve']
 ```
+
+
 *   For the proof of concept you can start by generating logs with 6 lines.
 ```
 python generate_log_files.py  6
@@ -87,6 +89,8 @@ log file 9 finished
 ...
 ```
 
+*   By default the log file out of order time is 9s. I considered it useful to include log files created slightly before init_datetime but still have entry lines in the interval. This time should be increased if the number of lines is increased.
+It can be set in the aktool/conf.py file
 
 *   Then we can proceed and run our processing script to output:
     *    Hosts that connected to  Hannibal in the last 10 s
@@ -128,7 +132,10 @@ Ran 7 tests in 0.045s
 
 OK
 ```
-
+## Some of the links used
+https://www.geeksforgeeks.org/python-reversed-vs-1-which-one-is-faster/
+https://www.csestack.org/difference-between-sort-sorted-python-list-performance/#:~:text=Sort%20vs%20Sorted%20Performance,-Which%20one%20is&text=Creating%20a%20list%20of%201000000%20integers%20selected%20randomly.&text=Here%2C%20sort()%20method%20is%20executing%20faster%20than%20sorted()%20function.&text=Here%2C%20sorted()%20function%20method,execution%20time%20in%20both%20cases.
+https://www.geeksforgeeks.org/python-ways-to-flatten-a-2d-list/
 
 ## Authors
 
