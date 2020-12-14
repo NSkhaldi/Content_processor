@@ -3,7 +3,7 @@ from ak_tools.conf import *
 def generate_log_files(nb_log_lines):
     log_count=1
     while 1:
-        file = open("../output/"+'log_'+str(log_count)+'.txt', 'a')
+        file = open("output/"+'log_'+str(log_count)+'.txt', 'a')
         
         for i in range(0,nb_log_lines):
             timeout = time.time() + 60*5   # 5 minutes from now

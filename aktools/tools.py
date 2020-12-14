@@ -115,9 +115,9 @@ def process_log_files(Hostname, past_time, log_ofo_time):
         active_hosts=[h for h in active_hosts.most_common() if h[1]==active_hosts.most_common(1)[0][1]]
             
         
-        print(" ".join(['Hosts that connected to ', Hostname ,'in the last', str(past_time),'s are: ',str(connected_hosts),'\n']))
-        print(" ".join(['Hosts that received connection from', Hostname ,'in the last', str(past_time),'s are: ',str(received_hosts),'\n']))
-        print(" ".join(['The hostname that generated most connections in the last', str(past_time),'s is: ',  str(active_hosts),'\n']))
+        print(" ".join(['Hosts that connected to ', Hostname ,'in the last', str(past_time),'s are: ',str(dict(connected_hosts)),'\n']))
+        print(" ".join(['Hosts that received connection from', Hostname ,'in the last', str(past_time),'s are: ', str(dict(received_hosts)),'\n']))
+        print(" ".join(['The hostname that generated most connections in the last', str(past_time),'s is: ',  str(dict(active_hosts)),'\n']))
         
         print('--------------------------------\n\n')
         

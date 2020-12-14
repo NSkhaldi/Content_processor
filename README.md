@@ -28,6 +28,7 @@ The repo contains:
 *   The processing start with the file that is currently generated
 *   The log file are parsed starting from the end (recent values first)
 *   By 'hostanem that generated most connections', I considered the involvement  of the host and not him being the source.
+*   I assumed that a host can connect to itself
 *   I assumed that when hosts have the same highest number of connection, all of them should be displayed
 *   Insted of repeating the host's name multiple times (ex: A host receives multiples connections from another), I considered for the sake of visibility to use collection for occurences count.
 *   I assumed that log files will be archived/flexibily stored so I didn't create a routine to delete them 
@@ -61,8 +62,12 @@ python generate_log_files.py <nb of line not exceeding 10000>
 python scripts/main.py <existing hostname> <time to reprocess (s)>
 ```
 
-## Demo
+## Demo & Proof of concept
+*   We use by default a list of 3 hosts, It can changed it the aktool/conf.py file. Don't forget to run the setup again to consider the changes.
 
+```
+['Hannibal', 'Hanny', 'Steeve']
+```
 *   For the proof of concept you can start by generating logs with 6 lines.
 ```
 python generate_log_files.py  6
@@ -98,10 +103,13 @@ So each 10 s it will calculate again.
 
 An output should normally look like:
 ```
-It is :  01:54:14 12/14/20.  the next output is in 10 s. 
-Hosts that connected to  Hannibal in the last 10 s are:  Counter({'Steeve': 2, 'Hannibal': 1, 'Hanny': 1}) 
-Hosts that received connection from Hannibal in the last 10 s are:  Counter({'Hannibal': 1, 'Hanny': 1, 'Steeve': 1}) 
-the hostname that generated most connections in the last 10 s is:  [('Hanny', 4)]
+It is :  13:31:58 12/14/20.  the next output is in 10 s. 
+
+Hosts that connected to  Hannibal in the last 10 s are:  {'Hannibal': 1} 
+
+Hosts that received connection from Hannibal in the last 10 s are:  {'Steeve': 3, 'Hanny': 1, 'Hannibal': 1} 
+
+The hostname that generated most connections in the last 10 s is:  {'Hannibal': 5}
 ```
 
 ## Running the tests
