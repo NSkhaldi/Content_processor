@@ -1,7 +1,7 @@
 # What's inside?
 
-This is a code challenge, written in the context of the 'Junior Data Operations Engineer' recrutment process at Clarity.ai .
-It should be viewed and assessed by the concerned person.
+*  A tool that genreate files continuously
+*  A tool that simultanuously does operations on the content of those files, starting each x time from the most recent file.
 
 ## Files
 The repo contains:
@@ -20,7 +20,7 @@ The repo contains:
    *   .gitignore
 
 
-## Notes and sssumptions 
+## Notes and asssumptions 
 
 *   I assumed that a unique log file generation should not take more than some x time to generate.
 *   Each predefined amount of time log files are processed
