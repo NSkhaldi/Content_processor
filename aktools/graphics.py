@@ -45,7 +45,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             style=dict(width='40%',display='inline-block')
                     )
         ],
-            style=dict(display='flex')
+            style={'display': 'flex', 'align-items': 'center'}
             ),
 
     dcc.Graph(id='live-graphs_host'),
