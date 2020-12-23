@@ -11,9 +11,10 @@ from aktools.graphics import *
      Input('graph-update', 'n_intervals'))
 def update_output(value, interval):
     
-    connected_hosts, received_hosts, active_hosts=Counter(),Counter(),Counter()
+    global connected_hosts, received_hosts, active_hosts
+    
 
-    init_datetime=int((time.time()-interval)*1000)
+    init_datetime=int((time.time()-5)*1000)
     end_datetime=int(time.time()*1000)
     past_files=sorted( [ filename for filename in glob.glob("output/*.txt") if os.path.getmtime(filename)>=init_datetime/1000-log_ofo_time ] , key=os.path.getmtime)[::-1]
     
@@ -45,9 +46,8 @@ def update_output(value, interval):
     return fig
     
 
-#past_time= 5 # default past time
+
 
 if __name__=='__main__':
-
 
     app.run_server(host='127.0.0.1', port=8080)

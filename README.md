@@ -123,7 +123,7 @@ To run the tests:
 ```
 python -m unittest tests/tests.py
 ```
-*   If everything alright this message should pop up:
+*   If everything alright this message should appear:
 
 ```
 .......
