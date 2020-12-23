@@ -13,8 +13,7 @@ def update_output(value, interval):
     
     connected_hosts, received_hosts, active_hosts=Counter(),Counter(),Counter()
 
-    log_ofo_time =0
-    init_datetime=int((time.time()-4)*1000)
+    init_datetime=int((time.time()-past_time)*1000)
     end_datetime=int(time.time()*1000)
     past_files=sorted( [ filename for filename in glob.glob("output/*.txt") if os.path.getmtime(filename)>=init_datetime/1000-log_ofo_time ] , key=os.path.getmtime)[::-1]
     
@@ -46,5 +45,11 @@ def update_output(value, interval):
     return fig
     
 
+past_time= 5 # default past time
+
 if __name__=='__main__':
-    app.run_server(host='0.0.0.0', port=8080,)
+
+    if (len(sys.argv) > 2 and sys.argv[1].isdigit()):
+        past_time= sys.argv[1]
+
+    app.run_server(host='127.0.0.1', port=8080)
