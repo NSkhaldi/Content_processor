@@ -2,12 +2,7 @@ from aktools.conf import *
 from aktools.loggen import *
 
 
-
-
-
-
-
-if __name__=='__main__':
+if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Please call with nb of lines parameter")
         sys.exit()

@@ -9,9 +9,9 @@
 
 *   The processing  tool  parse previously written log files and terminate or collect input from a new log file while it's being written and run indefinitely.
 The program outputs every x  amount of time:
- *  A list of hostnames connected to a given (configurable) host during the lest x time
- *  A list of hostnames received connections from a given (configurable) host during the last x time 
- *  The hostname(s) that generated most connections in the last x time
+    *  A list of hostnames connected to a given (configurable) host during the lest x time
+    *  A list of hostnames received connections from a given (configurable) host during the last x time 
+    *  The hostname(s) that generated most connections in the last x time
 
 ## Files
 The repo contains:
@@ -19,9 +19,8 @@ The repo contains:
     *  data: contains the data source data for the first part and for the tests
     *  scripts: contains the log generation simulator and the log processing script
     *  aktools: The package containig the processing tools and conf file
-    *  tests: containing the tests
-    *  output: contains the generated log data
-    *  docs: contains a jupyter notebook and its pdf file
+    *  tests: containing simplistic tests
+    *  output: contains the generated 
     
 *  Files
    *   README.md
@@ -58,6 +57,8 @@ The repo contains:
 ```
 python app.py
 ```
+*   Open the dashboard on http://127.0.0.1:8089/
+
 ![Alt Text](data/picgif.gif)
 
 ## More usage
