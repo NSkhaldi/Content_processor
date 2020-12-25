@@ -4,7 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-from aktools.conf import hosts
+from aktools.conf import hosts,dashboard_refresh
 
 
 external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
@@ -41,6 +41,6 @@ app.layout = html.Div(
             style={"display": "flex", "align-items": "center"},
         ),
         dcc.Graph(id="live-graphs_host"),
-        dcc.Interval(id="graph-update", interval=0.5 * 10000),
+        dcc.Interval(id="graph-update", interval=dashboard_refresh), # graph updates in ms
     ],
 )

@@ -99,7 +99,7 @@ It can be set in the aktool/conf.py file
 By:
 
 ```
-python scripts/main.py Hannibal 10
+python scripts/txt_disp.py Hannibal 10
 ```
 'Hannibal' being the hostname and 10 the number of seconds by which the process looks backward and also by which it repeats itself.
 So each 10 s it will calculate again.
@@ -113,6 +113,12 @@ Hosts that connected to  Hannibal in the last 10 s are:  {'Hannibal': 1}
 Hosts that received connection from Hannibal in the last 10 s are:  {'Steeve': 3, 'Hanny': 1, 'Hannibal': 1} 
 
 The hostname that generated most connections in the last 10 s is:  {'Hannibal': 5}
+```
+
+Or by graphic display:
+
+```
+python scripts/dashboard_disp.py 
 ```
 
 ## Running the tests
