@@ -1,22 +1,33 @@
 # What's inside?
 
-*  A tool that genreate files continuously
-*  A tool that simultanuously does operations on the content of those files, starting each x time from the most recent file.
+*  A tool that genreate files continuously & simultanuously process them(starting each x time from the most recent file) and visualize the results (on terminal & dashboard)
+    the generated log file contains newline-terminated, space-separated text formatted like:
+    <unix_timestamp> <hostname> <hostname>
+    For example:
+    1366815793 Hannibal  Hanny
+    Each line represents connection from a host (left) to another host (right) at a given time. The lines are roughly sorted by timestamp.
+
+*   The processing  tool  parse previously written log files and terminate or collect input from a new log file while it's being written and run indefinitely.
+The program outputs every x  amount of time:
+ *  A list of hostnames connected to a given (configurable) host during the lest x time
+ *  A list of hostnames received connections from a given (configurable) host during the last x time 
+ *  The hostname(s) that generated most connections in the last x time
 
 ## Files
 The repo contains:
 *  Folders 
+    *  data: contains the data source data for the first part and for the tests
     *  scripts: contains the log generation simulator and the log processing script
     *  aktools: The package containig the processing tools and conf file
     *  tests: containing the tests
-    *  data: contains the data source data for the first part and for the tests
     *  output: contains the generated log data
     *  docs: contains a jupyter notebook and its pdf file
     
 *  Files
    *   README.md
-   *   LICENSE.md
+   *   requirement.txt
    *   setup.py
+   *   LICENSE.md
    *   .gitignore
 
 
@@ -27,46 +38,33 @@ The repo contains:
 *   The logs are in each iteration reduced and sorted by time
 *   The processing start with the file that is currently generated
 *   The log file are parsed starting from the end (recent values first)
-*   By 'hostanem that generated most connections', I considered the involvement  of the host and not him being the source.
-*   I assumed that a host can connect to itself
 *   I assumed that when hosts have the same highest number of connection, all of them should be displayed
 *   Insted of repeating the host's name multiple times (ex: A host receives multiples connections from another), I considered for the sake of visibility to use collection for occurences count.
 *   I assumed that log files will be archived/flexibily stored so I didn't create a routine to delete them 
-*   CPU optimization was considered sleeping the process in each iteration
+*   CPU optimization was considered sleeping by the process in each iteration
 *   Memory optimization was considered by using built-in functions and my code syntax knowledge (less variables, comprehension lists...).
 
 
 ## Prerequisites
 
 *   Python environment (version used: 3.8.3 )
+*   See requirement.txt
 
-## Installing
 
-*   Clone/Download this git repository
+## Demo 
 
-*   Run the setup.py file 
-
-```
-python setup.py install
-```
-
-*   Run the log file generation
+*   Run the app.py
 
 ```
-python generate_log_files.py <nb of line not exceeding 10000>
+python app.py
 ```
+![Alt Text](data/picgif.gif)
 
-*   Run the main processing script with the right arguments
-
-```
-python scripts/main.py <existing hostname> <time to reprocess (s)>
-```
-
-## Demo & Proof of concept
-*   By default a list of 3 hosts, It can changed it the aktool/conf.py file. Don't forget to run the setup again to consider the changes.
+## More usage
+*   By default a list of 5 hosts, It can changed it the aktool/conf.py file. Don't forget to run the setup again to consider the changes, or restart the app since  'python setup.py install' is run each time the app starts
 
 ```
-['Hannibal', 'Hanny', 'Steeve']
+['Hannibal','Samatchi', 'Hanny', 'Steeve','Mustafa' ]
 ```
 
 
@@ -132,10 +130,7 @@ Ran 7 tests in 0.045s
 
 OK
 ```
-## Some of the links used
-https://www.geeksforgeeks.org/python-reversed-vs-1-which-one-is-faster/
-https://www.csestack.org/difference-between-sort-sorted-python-list-performance/#:~:text=Sort%20vs%20Sorted%20Performance,-Which%20one%20is&text=Creating%20a%20list%20of%201000000%20integers%20selected%20randomly.&text=Here%2C%20sort()%20method%20is%20executing%20faster%20than%20sorted()%20function.&text=Here%2C%20sorted()%20function%20method,execution%20time%20in%20both%20cases.
-https://www.geeksforgeeks.org/python-ways-to-flatten-a-2d-list/
+
 
 ## Authors
 
